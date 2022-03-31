@@ -1,7 +1,7 @@
 name: chat-app
 on:
   push:
-    branches: [master]
+    branches: [main]
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -34,7 +34,7 @@ jobs:
           file: ./Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/flask-helloworld
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/chat-app
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
