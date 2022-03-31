@@ -1,6 +1,8 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
+import { AppContext } from "../../Context/AppProvider";
 export default function RoomList() {
+  const { rooms } = React.useContext(AppContext);
   return (
     <div className="text-[14px]">
       <div className="px-[16px] py-[12px] flex items-center">
@@ -21,8 +23,11 @@ export default function RoomList() {
       </div>
       <div className="px-[40px]">
         <ul>
-          <li className="mb-[5px] text-[#1890ff]">Phòng 1</li>
-          <li className="mb-[5px] text-[#1890ff]">Phòng 2</li>
+          {rooms.map((room) => (
+            <li key={room.id} className="mb-[5px] text-[#1890ff]">
+              <Link to="/">{room.name}</Link>
+            </li>
+          ))}
         </ul>
         <button className="flex items-center group cursor-pointer py-[5px]">
           <svg

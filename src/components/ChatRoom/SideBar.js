@@ -2,17 +2,22 @@ import React from "react";
 import RoomList from "./RoomList";
 import { auth, db } from "../../firebase/config";
 import { useEffect } from "react";
+import { AuthContext } from "../../Context/AuthProvider";
 export default function SideBar() {
-  useEffect(() => {
-    db.collection("users").onSnapshot((snapshot) => {
-      const data = snapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
+  // useEffect(() => {
+  //   db.collection("users").onSnapshot((snapshot) => {
+  //     const data = snapshot.docs.map((doc) => ({
+  //       ...doc.data(),
+  //       id: doc.id,
+  //     }));
 
-      console.log({ data, snapshot, docs: snapshot.docs });
-    });
-  });
+  //     console.log({ data, snapshot, docs: snapshot.docs });
+  //   });
+  // });
+
+  const {
+    user: { displayName, photoURL },
+  } = React.useContext(AuthContext);
 
   return (
     <div className="bg-[#3f0e40] h-full text-white">
@@ -20,10 +25,10 @@ export default function SideBar() {
         <div className="flex items-center gap-[4px] ">
           <img
             className="w-[32px] h-[32px] rounded-[50%]"
-            src="https://lh3.googleusercontent.com/a-/AOh14GjZcyQJjT-MIYc-j5z3Q5WU3xRaW43yiQ3aN-Y5=s96-c"
+            src={photoURL}
             alt="avatar"
           />
-          <p className="text-[14px]">Nguyễn Mạnh Dũng</p>
+          <p className="text-[14px]">{displayName}</p>
         </div>
         <span
           onClick={() => auth.signOut()}
