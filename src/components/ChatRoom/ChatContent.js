@@ -16,7 +16,7 @@ export default function ChatContent() {
             autoComplete="off"
             className="w-full border-[1px] border-[#ccc] outline-0 rounded-[2px] pl-4 py-[8px] text-[12px]"
           />
-          <button className="bg-[#1890ff] absolute px-4 py-1 right-[2px] top-[2px] rounded-[2px]">
+          <button className="bg-[#1890ff] absolute px-4 py-1 right-[2px] top-[2px] rounded-[2px] text-white">
             Gửi
           </button>
         </div>
