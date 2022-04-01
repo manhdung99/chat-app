@@ -4,19 +4,14 @@ on:
   push:
     branches:
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install packages
-        run: npm install
-      - name: Build project
-        run: npm run-script build
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "chat-app-cicd" #Must be unique in Heroku
           heroku_email: "manhdung1999it@gmail.com"
-          procfile: "web: npm start"
+          branch: master

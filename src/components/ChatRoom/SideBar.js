@@ -1,7 +1,7 @@
 import React from "react";
 import RoomList from "./RoomList";
-import { auth, db } from "../../firebase/config";
-import { useEffect } from "react";
+import { auth } from "../../firebase/config";
+// import { useEffect } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 export default function SideBar() {
   // useEffect(() => {
