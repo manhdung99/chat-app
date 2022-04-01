@@ -18,6 +18,7 @@ jobs:
       - run: npm install
       - run: npm run build
       - name: Deploy to Heroku
+        uses: actions/checkout@v2
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           # args: deploy --dir=build --prod
