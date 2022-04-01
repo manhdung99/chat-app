@@ -18,12 +18,11 @@ jobs:
       - run: npm install
       - run: npm run build
       - name: Deploy to Heroku
-        uses: actions/checkout@v2
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           # args: deploy --dir=build --prod
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: "chat-app-cicd"
           heroku_email: "manhdung1999@gmail.com"
-          branch: master
+          remote_branch: master
           dontuseforce: true
